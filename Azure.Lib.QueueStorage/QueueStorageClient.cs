@@ -39,7 +39,7 @@ namespace Azure.Lib.QueueStorage
         public async Task<QueueObject<T>> Pop(TimeSpan? invisibleTimeSpan = null, Action < QueueObject<T>> action = null)
         {
             CloudQueue queue = await GetQueueAsync();
-            CloudQueueMessage peekedMessage = await queue.GetMessageAsync(invisibleTimeSpan, new QueueRequestOptions(), new OperationContext());
+            CloudQueueMessage peekedMessage = await queue.GetMessageAsync(invisibleTimeSpan ?? TimeSpan.FromSeconds(3), new QueueRequestOptions(), new OperationContext());
             if (peekedMessage != null)
             {
                 QueueObject<T> queueObject = JsonConvert.DeserializeObject<QueueObject<T>>(peekedMessage.AsString);
