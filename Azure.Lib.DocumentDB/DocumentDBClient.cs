@@ -52,7 +52,7 @@ namespace Azure.Lib.DocumentDB
         {
             await Init();
 
-            return _client.CreateDocumentQuery<T>(GetCollectionUri<T>()).First(x => x.Id == id);
+            return _client.CreateDocumentQuery<T>(GetCollectionUri<T>()).Where(d => d.Id == id.ToString()).AsEnumerable().FirstOrDefault();
         }
 
         public async Task<IList<T>> GetAll<T>() where T : BaseEntity
@@ -78,7 +78,7 @@ namespace Azure.Lib.DocumentDB
             await _client.CreateDocumentAsync(GetCollectionUri<T>(), entity);
         }
 
-        public async Task InsertAsync<T>(IEnumerable<T> entities) where T : BaseEntity
+        public async Task InsertBatchAsync<T>(IEnumerable<T> entities) where T : BaseEntity
         {
             await Init();
 
