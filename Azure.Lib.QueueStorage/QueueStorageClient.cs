@@ -45,8 +45,15 @@ namespace Azure.Lib.QueueStorage
                 QueueObject<T> queueObject = JsonConvert.DeserializeObject<QueueObject<T>>(peekedMessage.AsString);
                 if (action != null)
                 {
-                    action(queueObject);
-                    await queue.DeleteMessageAsync(peekedMessage);
+                    try
+                    {
+                        action(queueObject);
+                        await queue.DeleteMessageAsync(peekedMessage);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw ex;
+                    }
                 }
 
                 return queueObject;
