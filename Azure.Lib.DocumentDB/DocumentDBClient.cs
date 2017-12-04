@@ -23,18 +23,15 @@ namespace Azure.Lib.DocumentDB
             _settings = settings;
         }
 
-        public async Task<bool> Any<T>(string id) where T : BaseEntity
+        public async Task<IEnumerable<T>> WhereAsync<T>(Func<T, bool> predicate)
         {
             await Init();
 
-            return _client.CreateDocumentQuery<T>(GetCollectionUri<T>()).Any(x => x.Id == id);
-        }
+            return
+                _client.CreateDocumentQuery<T>(GetCollectionUri<T>())
+                    .Where(predicate)
+                    .ToList();
 
-        public async Task<IQueryable<T>> WhereAsync<T>(Expression<Func<T, bool>> predicate)
-        {
-            await Init();
-
-            return _client.CreateDocumentQuery<T>(GetCollectionUri<T>()).Where(predicate);
         }
 
         public async Task<T> FirstOrDefaultAsync<T>(Func<T, bool> predicate)
