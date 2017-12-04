@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Azure.Lib.BlobStorage
 {
-    public class BlobStorageClient
+    public class BlobStorageClient : IBlobStorageClient
     {
         private BlobStorageSettings _settings;
 

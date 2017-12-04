@@ -1,26 +1,26 @@
 ﻿using System;
 
-namespace Azure.Lib.TableStorage
+namespace Azure.Lib.QueueStorage
 {
-    public class TableStorageSettings
+    public class QueueStorageSettings
     {
         public string StorageAccount { get; }
 
         public string StorageKey { get; }
 
-        public string TableName { get; }
+        public string QueueName { get; }
 
-        public TableStorageSettings(string storageAccount, string storageKey, string tableName)
+        public QueueStorageSettings(string storageAccount, string storageKey, string queueName)
         {
             if (string.IsNullOrWhiteSpace(storageAccount)) throw new ArgumentNullException("StorageAccount");
 
             if (string.IsNullOrWhiteSpace(storageKey)) throw new ArgumentNullException("StorageKey");
 
-            if (string.IsNullOrWhiteSpace(tableName)) throw new ArgumentNullException("TableName");
+            if (string.IsNullOrWhiteSpace(queueName)) throw new ArgumentNullException("QueueName");
 
             StorageAccount = storageAccount;
             StorageKey = storageKey;
-            TableName = tableName;
+            QueueName = queueName;
         }
     }
 }
