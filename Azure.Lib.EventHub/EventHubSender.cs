@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Azure.Lib.EventHub
 {
-    public class EventHubSender<T>
+    public class EventHubSender<T> : IEventHubSender<T>
     {
         private EventHubSenderSettings _settings;
 

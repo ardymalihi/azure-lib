@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Azure.Lib.EventHub
 {
-    public class EventHubReceiver<T>
+    public class EventHubReceiver<T> : IEventHubReceiver<T>
     {
         private EventHubReceiverSettings _settings;
 
