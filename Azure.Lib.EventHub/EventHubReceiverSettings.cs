@@ -6,15 +6,15 @@ namespace Azure.Lib.EventHub
 {
     public class EventHubReceiverSettings
     {
-        public string ConnectionString { get; set; }
+        public string ConnectionString { get; }
 
-        public string EntityPath { get; set; }
+        public string EntityPath { get; }
 
-        public string StorageContainerName { get; set; }
+        public string StorageContainerName { get; }
 
-        public string StorageAccountName { get; set; }
+        public string StorageAccountName { get; }
 
-        public string StorageAccountKey { get; set; }
+        public string StorageAccountKey { get; }
 
         public EventHubReceiverSettings(string connectionString, string entityPath, string storageContainerName, string storageAccountName, string storageAccountKey)
         {

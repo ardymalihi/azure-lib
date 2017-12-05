@@ -6,9 +6,9 @@ namespace Azure.Lib.EventHub
 {
     public class EventHubSenderSettings
     {
-        public string ConnectionString { get; set; }
+        public string ConnectionString { get; }
 
-        public string EntityPath { get; set; }
+        public string EntityPath { get; }
 
         public EventHubSenderSettings(string connectionString, string entityPath)
         {

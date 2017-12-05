@@ -4,9 +4,9 @@ namespace Azure.Lib.DocumentDB
 {
     public class DocumentDBSettings
     {
-        public string EndpointUri { get; set; }
-        public string PrimaryKey { get; set; }
-        public string DatabaseName { get; set; }
+        public string EndpointUri { get; }
+        public string PrimaryKey { get; }
+        public string DatabaseName { get; }
 
         public DocumentDBSettings(string endpointUri, string primaryKey, string databaseName)
         {
